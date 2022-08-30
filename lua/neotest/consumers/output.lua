@@ -117,14 +117,16 @@ local init = function()
   if config.output.open_on_run then
     client.listeners.results = function(_, results)
       vim.notify("output.listeners.results(), results: " .. vim.inspect(results))
-      -- if win then
-      --   return
-      -- end
+      if win then
+        vim.notify("window " .. win .. " already exists, exiting")
+        return
+      end
       local cur_pos = async.fn.getpos(".")
       local line = cur_pos[2] - 1
       local buf_path = vim.fn.expand("%:p", _, _)
       local positions = client:get_position(buf_path)
       if not positions then
+        vim.notify("no positions found")
         return
       end
       for _, pos in positions:iter() do
