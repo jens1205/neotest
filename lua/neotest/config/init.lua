@@ -82,6 +82,7 @@ define_highlights()
 ---@class neotest.Config.output
 ---@field enabled boolean
 ---@field open_on_run string|boolean Open nearest test result after running
+---@field open_win function? Creates output window
 
 ---@class neotest.Config.diagnostic
 ---@field enabled boolean

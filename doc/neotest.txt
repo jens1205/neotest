@@ -225,6 +225,8 @@ Class~
 Fields~
 {enabled} `(boolean)`
 {open_on_run} `(string|boolean)` Open nearest test result after running
+{open_win} (function) Function that takes a table with width and height key
+and creates the output window (default floating window)
 
 Class~
 {neotest.Config.diagnostic}
