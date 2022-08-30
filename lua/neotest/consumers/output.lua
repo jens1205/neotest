@@ -5,7 +5,7 @@ local config = require("neotest.config")
 local win, short_opened
 
 local function open_output(result, opts)
-  vim.notify("open_output(), result: " .. vim.inspect(result) .. ", opts: " .. vim.inspect(opts))
+  -- vim.notify("open_output(), result: " .. vim.inspect(result) .. ", opts: " .. vim.inspect(opts))
   local output = opts.short and result.short or (result.output and lib.files.read(result.output))
   if not output then
     if not opts.quiet then
@@ -113,10 +113,10 @@ neotest.output = {}
 local client
 
 local init = function()
-  vim.notify("initialising output...")
+  -- vim.notify("initialising output...")
   if config.output.open_on_run then
     client.listeners.results = function(_, results)
-      vim.notify("output.listeners.results(), results: " .. vim.inspect(results))
+      -- vim.notify("output.listeners.results(), results: " .. vim.inspect(results))
       -- if win then
       --   vim.notify("window " .. win .. " already exists, exiting")
       --   return
@@ -126,7 +126,7 @@ local init = function()
       local buf_path = vim.fn.expand("%:p", _, _)
       local positions = client:get_position(buf_path)
       if not positions then
-        vim.notify("no positions found")
+        -- vim.notify("no positions found")
         return
       end
       for _, pos in positions:iter() do
