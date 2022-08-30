@@ -113,16 +113,16 @@ neotest.output = {}
 local client
 
 local init = function()
-  -- vim.notify("initialising output...")
+  vim.notify("initialising output...")
   if config.output.open_on_run then
     client.listeners.results = function(_, results)
-      -- vim.notify("output.listeners.results(), results: " .. vim.inspect(results))
+      vim.notify("output.listeners.results(), results: " .. vim.inspect(results))
       if win then
         return
       end
       local cur_pos = async.fn.getpos(".")
       local line = cur_pos[2] - 1
-      local buf_path = vim.fn.expand("%:p")
+      local buf_path = vim.fn.expand("%:p", _, _)
       local positions = client:get_position(buf_path)
       if not positions then
         return
