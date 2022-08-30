@@ -117,10 +117,10 @@ local init = function()
   if config.output.open_on_run then
     client.listeners.results = function(_, results)
       vim.notify("output.listeners.results(), results: " .. vim.inspect(results))
-      if win then
-        vim.notify("window " .. win .. " already exists, exiting")
-        return
-      end
+      -- if win then
+      --   vim.notify("window " .. win .. " already exists, exiting")
+      --   return
+      -- end
       local cur_pos = async.fn.getpos(".")
       local line = cur_pos[2] - 1
       local buf_path = vim.fn.expand("%:p", _, _)
